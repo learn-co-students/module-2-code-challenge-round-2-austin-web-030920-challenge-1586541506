@@ -1,0 +1,27 @@
+<h1>New Appearance</h1>
+
+<% if @errors %>
+
+    <h3><%= pluralize(@errors.count, "error") %> stopped the form from being saved:</h3>
+    <ul>
+    <% @errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+    </ul>
+
+<% end %>
+
+
+<%= form_for @appearance do |f| %>
+
+<%= f.label :guest %>
+<%= f.collection_select :guest_id, Guest.all, :id, :name, prompt: true%><br>
+
+<%= f.label :episode %>
+<%= f.collection_select :episode_id, Episode.all, :id, :number, prompt: true %><br>
+
+<%= f.label :rating %>
+<%= f.number_field :rating, min: 1, max: 5 %><br>
+
+<%= f.submit %>
+<% end %>
