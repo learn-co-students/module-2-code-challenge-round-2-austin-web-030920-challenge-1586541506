@@ -1,0 +1,7 @@
+<% sorted_appearances = @guest.appearances.sort_by(&:rating).reverse! %>
+
+<% sorted_appearances.each do |appearance| %>
+    Episode: <%= link_to appearance.episode.number, episode_path(appearance.episode) %><br>
+    <%= " " + appearance.episode.date.strftime("%B %d, %Y") %><br>
+    Rating: <%= appearance.rating %><br><br>
+    <% end %>
