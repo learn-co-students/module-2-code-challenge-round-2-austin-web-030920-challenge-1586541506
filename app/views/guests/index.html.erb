@@ -1,7 +1,11 @@
-<h1>All The Guests</h1>
+<h3>All The Guests:</h3>
+<h4>Click on a guest to view their episode appearances</h4>
 
 <ul>
   <% @guests.each do |guest| %>
-    <li><%= guest.name %></li>
+    <li><%= link_to guest.name, guest_path(guest) %></li>
   <% end %>
 </ul>
+
+<%= link_to '<button type="button">Episodes</button>'.html_safe, "/episodes"%>
+
