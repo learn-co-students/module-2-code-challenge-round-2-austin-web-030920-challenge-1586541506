@@ -1,8 +1,10 @@
-<h3>Guest:</h3>
-
+<h3><%= "Guest: #{@guest.name}"%></h3>
+<p><%= "Occupation: #{@guest.occupation.capitalize}"%></p>
+<h4>Episode Appearances:</h4>
 <% @sorted_episodes = @guest.episodes.sort_by{ |ep| ep.appearances.first.rating}.reverse %>
 <% @sorted_episodes.each do |ep| %>
-<%= link_to "Episode ".html_safe + ep.date, episode_path(ep) %><br>
+<%= "Episode #{ep.number}"%><br>
+<%= link_to ep.date, episode_path(ep) %><br>
 <%= "Rating: #{ep.appearances.first.rating}" %><br><br>
 <% end %>
 

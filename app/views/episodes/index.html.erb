@@ -1,10 +1,10 @@
 <h1>All Episodes</h1>
 
-<ol>
+<ul style="list-style: none;">
   <% @episodes.each do |episode| %>
     <li><%= link_to "Episode #{episode.number} - #{episode.date.strftime("%B %d, %Y")}", episode_path(episode)%></li>
   <% end %>
-</ol>
+</ul>
 
 <%= link_to '<button type="button">New Appearance</button>'.html_safe, "/appearances/new"%><br>
 <%= link_to '<button type="button">Guests</button>'.html_safe, "/guests"%>

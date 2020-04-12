@@ -1,11 +1,13 @@
-<h3>All The Guests:</h3>
+<h3>Guests:</h3>
 <h4>Click on a guest to view their episode appearances</h4>
 
 <ul>
-  <% @guests.each do |guest| %>
+<% @sorted_guests = @guests.sort_by{|guest| guest.name}%>
+  <% @sorted_guests.each do |guest| %>
     <li><%= link_to guest.name, guest_path(guest) %></li>
   <% end %>
 </ul>
 
-<%= link_to '<button type="button">Episodes</button>'.html_safe, "/episodes"%>
+<%= link_to '<button type="button">Episodes</button>'.html_safe, "/episodes"%><br>
+<%= link_to '<button type="button">Create Appearance</button>'.html_safe, "/appearances/new"%>
 
