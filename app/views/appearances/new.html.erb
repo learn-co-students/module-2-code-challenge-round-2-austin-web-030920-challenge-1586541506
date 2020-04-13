@@ -1,0 +1,19 @@
+<%= form_for @appearance do |f| %>
+    
+    <% if @appearance.errors.any? %>
+    <% @appearance.errors.full_messages.each do |message| %>
+        <h3><%= message %></h3><br><br>
+    <% end %>
+    <% end %>
+
+    <%= f.label :guest %>
+    <%= f.collection_select(:guest_id, Guest.all, :id, :name, prompt: true) %><br>
+
+    <%= f.label :episode %>
+    <%= f.collection_select(:episode_id, Episode.all, :id, :date, prompt: true) %><br><br>
+
+    <%= f.label "On a scale of 1 - 5, with 5 being the best, please rate this appearance: " %><br>
+    <%= f.text_field :rating %><br><br>
+
+    <%= f.submit %>
+    <% end %>
