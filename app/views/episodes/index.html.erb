@@ -1,7 +1,10 @@
 <h1>All Episodes</h1>
 
 <ul>
+  <%-# creates link per episode -%>
   <% @episodes.each do |episode| %>
-    <li><%= "Episode #{episode.number} - #{episode.date.strftime("%B %d, %Y")}"%></li>
+
+    <%-# creates link between the index page and the show page for a specific episode. -%>
+    <li><%=link_to "Episode #{episode.number} - #{episode.date.strftime('%B %d, %Y')}", episode_path(episode.id)%></li>
   <% end %>
 </ul>
