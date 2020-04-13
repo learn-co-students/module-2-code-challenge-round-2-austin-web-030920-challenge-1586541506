@@ -1,0 +1,24 @@
+<h2>Make an Appearance</h2>
+
+<% if flash[:notice] %>
+  <p style="color: red; font-weight: bold"><%= flash[:notice] %></p>
+<% end %>
+
+<%= form_for @appearance do |f| %>
+
+    <%= f.label :guest_id %>
+
+    <%= f.collection_select(:guest_id, Guest.all, :id, :name)%><br />
+
+    <%= f.label :episode_id %>
+
+    <%= f.collection_select(:episode_id, Episode.all, :id, :date)%><br />
+
+    <%= f.label :rating %>
+
+    <%= f.text_field :rating %><br />
+    
+    <%= f.submit %>
+    <% end %>
+
+    <%-# Too lazy to keep rewriting over again but that ^ makes the form work with the code -%>

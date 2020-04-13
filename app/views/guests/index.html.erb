@@ -1,7 +1,11 @@
 <h1>All The Guests</h1>
 
 <ul>
+  <%-# creates link per guest -%>
   <% @guests.each do |guest| %>
-    <li><%= guest.name %></li>
+
+    <%-# creates link between the index page and the show page for a specific guest. -%>
+    <li><%=link_to guest.name, guest_path(guest.id) %></li>
+    
   <% end %>
 </ul>

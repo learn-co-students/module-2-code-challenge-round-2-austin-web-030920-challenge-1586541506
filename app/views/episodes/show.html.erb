@@ -1,0 +1,17 @@
+<h1><%= @episode.number %></h1>
+
+<h3>Release Date</h3>
+<p><%= @episode.date.strftime('%B %d, %Y') %></p>
+
+<%-# showing the average rating in highest order -%>
+<h3>Average Rating</h3>
+<p style = "color: green; font-weight: bold"><%= @episode.appearances.average(:rating).round(1) %></p>
+
+<h3>Guests on the Episode</h3>
+<ol>
+
+<% @episode.appearances.order(rating: :desc).each do |appearance| %>
+    <%-# Showing all the guests of the existing episode. -%>
+    <li><%= link_to appearance.guest.name, guest_path(appearance.guest.id) %> - <%= appearance.rating %></li> 
+<% end %>
+</ol>
