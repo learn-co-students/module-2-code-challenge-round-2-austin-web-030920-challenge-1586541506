@@ -3,6 +3,8 @@
 <ul>
 <% @guest.sort_episodes_by_rating.each do |episode| %>
 <label>Episode <%= episode.number %>:</label>
-<li><%= link_to episode.date, episode %></li>
+<li><%= link_to episode.date, episode %><br />
+Rating: <%= @guest.rating_by_episode(episode) %></li>
+
 <% end %>
 </ul>
