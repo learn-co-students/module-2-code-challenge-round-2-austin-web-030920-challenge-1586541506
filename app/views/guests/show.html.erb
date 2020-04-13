@@ -1,17 +1,11 @@
 <h1><%= @guest.name.upcase %></h1>
 <h2><%= @guest.occupation.capitalize %></h2><br>
 
-<h2> Episodes: </h2>
-<% @guest.episodes.reverse.each do |episode| %>
-    <p><h3>Episode Number: <%= link_to episode.number, episode_path(episode) %></h3></p>
 
-    <p>Date: <%= link_to episode.date, episode_path(episode) %></p>
-
-        <% @episode_rating.each_key do |r| %>
-        <% if episode[:id] == r %>
-        <p>Rating: <%= @episode_rating[r] %></p>
-        <% end %> 
-    <% end %> 
-<% end%>   
+    <% @omg.each do |guest_appearance, info|%>
+        <h2> Episode Number: <%= info[0]%></h2>
+        <p> Date: <%= info[1]%></p>
+        <p> Rating: <%= info[2]%></p><br>
+    <% end %>
 
 

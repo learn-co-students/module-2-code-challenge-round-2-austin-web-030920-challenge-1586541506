@@ -6,37 +6,26 @@ class GuestsController < ApplicationController
 
   def show
     @episode_rating = {}
+    @gedr = {}
     @guest = Guest.find(params[:id])
+    #@gedr --> guest, episode, date, rating
 
     @guest.appearances.each do |appearance| 
        if appearance.guest_id == @guest.id
         @episode_rating[appearance.episode_id] = appearance.rating
      end 
     end
+
+    @guest.episodes.each do |episode|
+      @gedr[episode] = [episode.number]
+      @gedr[episode].push("#{episode.date}")
+
+        @episode_rating.each_key do |r|
+          if episode[:id] == r
+            @gedr[episode].push(@episode_rating[r])
+          end
+        end
+      end
+  @omg = @gedr.sort_by {|r| r[1][2]}.reverse.to_h
   end
-  
 end
-
-
-# def show
-#   @guest_episodes = []
-#   @guest_ratings = []
-#   @guest = Guest.find(params[:id])
-
-#   @guest.appearances.each do |appearance| 
-#      if appearance.guest_id == @guest.id
-#       @guest_episodes << appearance.episode_id
-#       @guest_ratings << appearance.rating
-#    end 
-#   end
-
-# end
-# ###
-# <% episode.guests.each do |n| %>
-#   <% if n.name == @guest.name %>
-#   <%binding.pry%>
-#        <p>Rating:  <%= n.appearances.first.rating %></p>
-#    <% end %> </p>
-# <% end %><br>
-
-
