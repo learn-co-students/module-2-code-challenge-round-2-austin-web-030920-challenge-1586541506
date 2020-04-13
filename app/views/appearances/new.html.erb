@@ -1,0 +1,24 @@
+<h3>New Appearance</h3>
+
+
+<% if @appearance.errors.any? %>
+    <p><%= pluralize(@appearance.errors.count, "error") %>:</p>
+    <ul>
+    <% @appearance.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    </ul>
+  
+<% end %>
+
+<%= form_for(@appearance) do |f| %>
+    <%= f.label :guest %>
+    <%= f.collection_select(:guest_id, Guest.all, :id, :name, prompt: true) %><br>
+    <%= f.label :episode %>
+    <%= f.collection_select(:episode_id, Episode.all, :id, :number, prompt: true) %><br>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %><br>
+    <%= f.submit "Submit Appearance"%>
+<% end %>
+
+<%= link_to '<button type="button">Cancel</button>'.html_safe, "/episodes"%>

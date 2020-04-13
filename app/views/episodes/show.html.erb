@@ -1,0 +1,21 @@
+<h3>Episode: <%= @episode.date %><br></h3>
+<h4>Guest Appearances:</h4>
+
+<% if @episode.appearances.length > 0 %>
+<ul>
+<% @sorted_guests = @episode.guests.sort_by{|guest| guest.name}%>
+<% @sorted_guests.each do |guest| %>
+<li><%= link_to guest.name, guest_path(guest) %></li><br>
+<% end %>
+</ul>
+
+<% total = 0 %>
+<% @episode.appearances.each do |app| %>
+<% total += app.rating %>
+<% end %>
+<p><%= "Average Rating: #{total/@episode.appearances.length}" %></p>
+<% else %>
+<p>No Appearances Created</p>
+<% end %>
+<%= link_to '<button type="button">Create Appearance</button>'.html_safe, "/appearances/new"%><br>
+<%= link_to '<button type="button">Back</button>'.html_safe, "/episodes"%>
