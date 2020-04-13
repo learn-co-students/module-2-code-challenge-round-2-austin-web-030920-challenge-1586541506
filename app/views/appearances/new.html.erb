@@ -1,0 +1,6 @@
+<%= form_for(@appearance) do |f| %>
+    <%= f.collection_select(:guest_id, Guest.all, :id, :name) %>
+    <%= f.collection_select(:episode_id, Episode.all, :id, :date) %>
+    <%= f.text_field :rating %>
+    <%= f.submit "Create Appearance" %>
+<% end %>
