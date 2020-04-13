@@ -6,6 +6,8 @@ class Appearance < ApplicationRecord
     validates :guest_id, uniqueness: { scope: :episode,
         message: "may only appear on an episode once." }
 
+        #next time use something other than "numericality" to prevent user from adding rating that is not whole. 
+
 
 end
 

@@ -8,7 +8,7 @@ class GuestsController < ApplicationController
     @episode_rating = {}
     @gedr = {}
     @guest = Guest.find(params[:id])
-    #@gedr --> guest, episode, date, rating
+    #@gedr --> guest: episode, date, rating
 
     @guest.appearances.each do |appearance| 
        if appearance.guest_id == @guest.id

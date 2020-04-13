@@ -2,6 +2,7 @@ class AppearancesController < ApplicationController
 
     def index
       @appearances = Appearance.all
+      redirect_to new_appearance_path
     end
 
     def show
@@ -16,11 +17,9 @@ class AppearancesController < ApplicationController
         @appearance = Appearance.new(appearance_params)
             if @appearance.valid?
                 @appearance.save
-                # binding.pry
                 redirect_to episode_path(appearance_params[:episode_id])
             else
                 render :new
-    
             end
     end
 
@@ -29,7 +28,4 @@ class AppearancesController < ApplicationController
     def appearance_params
         params.require(:appearance).permit(:rating, :guest_id, :episode_id, :guest_id)
     end
-
-
-
-  end
+end

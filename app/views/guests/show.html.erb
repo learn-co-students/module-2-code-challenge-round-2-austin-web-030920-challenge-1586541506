@@ -1,11 +1,11 @@
 <h1><%= @guest.name.upcase %></h1>
 <h2><%= @guest.occupation.capitalize %></h2><br>
 
-
     <% @omg.each do |guest_appearance, info|%>
-        <h2> Episode Number: <%= info[0]%></h2>
+        <h2> Episode Number: <%= link_to info[0], episode_path(info)%></h2>
         <p> Date: <%= info[1]%></p>
         <p> Rating: <%= info[2]%></p><br>
+        
     <% end %>
 
 
