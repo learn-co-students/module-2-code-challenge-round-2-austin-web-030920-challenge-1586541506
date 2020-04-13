@@ -7,7 +7,7 @@ class CreateAppearances < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-
+    # letting everything be unique
     add_index :appearances, [:guest_id, :episode_id], unique: true
   end
 end

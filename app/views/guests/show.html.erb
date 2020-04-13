@@ -5,7 +5,7 @@
 
 <% @guest.appearances.order(rating: :desc).each do |appearance| %>
 
-    <%-# Showing all episodes of the existing Guests. -%>
+    <%-# Showing all episodes of the existing Guests and the Rating in highest order -%>
     <li><%=link_to "Episode #{appearance.episode.number} - #{appearance.episode.date.strftime('%B %d, %Y')}", episode_path(appearance.episode.id)%> Rating - <%= appearance.rating %></li>
     
 <% end %>

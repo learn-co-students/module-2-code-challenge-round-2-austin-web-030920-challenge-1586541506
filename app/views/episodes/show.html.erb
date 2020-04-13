@@ -3,6 +3,7 @@
 <h3>Release Date</h3>
 <p><%= @episode.date.strftime('%B %d, %Y') %></p>
 
+<%-# showing the average rating in highest order -%>
 <h3>Average Rating</h3>
 <p style = "color: green; font-weight: bold"><%= @episode.appearances.average(:rating).round(1) %></p>
 

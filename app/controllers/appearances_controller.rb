@@ -8,13 +8,15 @@ class AppearancesController < ApplicationController
     # created new appeaarance in table
     @appearance = Appearance.new(appearance_params)
 
-    # saves new appearance
+    # saves new appearance with no issues
     if @appearance.save
         redirect_to :controller => 'episodes', :action => 'show', :id => appearance_params[:episode_id], :notice => "Added Appearance"
       else
+        # if trying to add the same guest again
         if @appearance.errors.full_messages[0] == "Guest has already been taken"
             flash[:notice] = "Error, this guest has already appeared in this episode!"
         else 
+          #if trying to add rating to high or low, having issues wuth error message going away
             flash[:notice] = "Error, this Rating nned to be between 1-5!"
         end
         redirect_to :controller => 'appearances', :action => 'new'
